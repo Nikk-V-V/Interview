@@ -1,0 +1,18 @@
+<div class="container">
+  <section class="posts">
+    <mat-card>
+      <mat-card-title>Posts</mat-card-title>
+      <mat-expansion-panel *ngFor="let post of posts" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{post.title}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{post.body}}</p>
+        <a routerLink="/post/{{post.id}}" color="primary" mat-raised-button>Look the post</a>
+        <a routerLink="/user/{{post?.userId}}" color="accent" mat-raised-button>Look Author</a>
+      </mat-expansion-panel>
+    </mat-card>
+  </section>
+</div>
+

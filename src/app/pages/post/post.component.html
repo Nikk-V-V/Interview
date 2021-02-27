@@ -1,0 +1,22 @@
+<div class="container">
+  <section class="post">
+    <mat-card *ngIf="post">
+      <mat-card-title [innerHTML]="post.title"></mat-card-title>
+      <mat-card-content [innerHTML]="post.body"></mat-card-content>
+      <mat-expansion-panel *ngFor="let comment of commentsOfPost" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{comment.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{comment?.email}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{post.body}}</p>
+        <a routerLink="/user/{{post?.userId}}" color="accent" mat-raised-button>Look Author</a>
+      </mat-expansion-panel>
+    </mat-card>
+  </section>
+</div>
+
+<button (click)="back()" mat-button>Back</button>

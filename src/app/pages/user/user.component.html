@@ -1,0 +1,70 @@
+<div class="container">
+  <section class="user">
+    <mat-card *ngIf="user">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Pseudonym: {{user.username}}</mat-card-title>
+          <mat-card-subtitle>Real name: {{user.name}}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content >
+        <div>
+          <mat-card-title>Contacts:</mat-card-title>
+          <mat-list>
+            <mat-list-item>Email: {{user.email}}</mat-list-item>
+            <mat-list-item>Phone: {{user.phone}}</mat-list-item>
+          </mat-list>
+        </div>
+       <div>
+         <mat-card-title>Address:</mat-card-title>
+         <mat-list>
+           <mat-list-item>City: {{user.address.city}}</mat-list-item>
+           <mat-list-item>Geo:
+             <span>lat: {{user.address?.geo?.lat}}</span>
+             <span>lng: {{user.address?.geo?.lng}}</span>
+           </mat-list-item>
+           <mat-list-item>Street: {{user.address.street}}</mat-list-item>
+           <mat-list-item>Suite {{user.address.suite}}</mat-list-item>
+           <mat-list-item>Zipcode: {{user.address.zipcode}}</mat-list-item>
+         </mat-list>
+       </div>
+       <div>
+         <mat-card-title>Company:</mat-card-title>
+         <mat-list>
+           <mat-list-item>
+             Name: {{user.company.name}}
+           </mat-list-item>
+           <mat-list-item>
+             BS: {{user.company.bs}}
+           </mat-list-item>
+           <mat-list-item>
+             Catch Phrase: {{user?.company?.catchPhrase}}
+           </mat-list-item>
+         </mat-list>
+       </div>
+       <div>
+         <mat-card-title>Web site:</mat-card-title>
+         <mat-list>
+           <mat-list-item>
+             {{user.website}}
+           </mat-list-item>
+         </mat-list>
+       </div>
+       <div>
+         <mat-card-title>Posts:</mat-card-title>
+         <mat-expansion-panel *ngFor="let post of posts" hideToggle>
+           <mat-expansion-panel-header>
+             <mat-panel-title>
+               {{post.title}}
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+           <p>{{post.body}}</p>
+           <a routerLink="/post/{{post.id}}" color="primary" mat-raised-button>Look the post</a>
+         </mat-expansion-panel>
+       </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
+
+<button (click)="back()" mat-button>Back</button>
